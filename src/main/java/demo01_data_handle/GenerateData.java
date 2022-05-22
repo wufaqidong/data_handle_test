@@ -1,3 +1,5 @@
+package demo01_data_handle;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,7 +10,7 @@ import java.util.Random;
 /**
  * @program: data_handle
  * @description:
- * @author: xiebinbin
+ * @author: qiaoqiao
  * @create: 2022-05-20 12:59
  **/
 
