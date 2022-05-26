@@ -21,10 +21,10 @@
 
 #👉 2、什么是并行与并发？
 并发：操作系统的任务调度器调度多个线程轮流使用某个CPU的操作（CPU的时间片为15ms），这个过程中会发生线程的上下文切换
-![并发](/src/main/javaInterview/picture/并发.png)
+![并发](/src/main/javaInterview/picture/java基础_并发.png)
 
 并行：对于多核CPU来讲，每个核（core） 都可以调度运行线程，这时候线程可以是并行的，不同的线程同时使用不同的cpu在执行。
-![并发](/src/main/javaInterview/picture/并行.png)
+![并发](/src/main/javaInterview/picture/java基础_并行.png)
 
 一般来说对于单核CPU的机器，线程执行是并发的，对于多核CPU来讲，线程执行是既有并行也有并发的
 
@@ -97,6 +97,7 @@ FutureTask实现类实现了Future接口，并且有构造函数，参数是传�
 以此获得返回值
 其中Future接口的get方法是阻塞方法，没有得到get的值会阻塞主线程
 
+```
 package TestFutureTask;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -120,7 +121,7 @@ e.printStackTrace();
 System.out.println("主线程运行！");
 }
 }
-
+```
 #👉 6、什么是Callable和Future?
 Callable 接口类似于 Runnable，从名字就可以看出来了，但是 Runnable 不会返 回结果，并且无法抛出返回结果的异常，
 而 Callable 功能更强大一些，被线程执 行后，可以返回值，这个返回值可以被 Future 拿到，也就是说，Future 可以拿到 异步执行任务的返回值。可以认为是带有回调的 Runnable。
@@ -163,7 +164,7 @@ isInterrupted() 也会返回当前Thread的中断状态，但是==不会主动�
 
 
 
-![avatar](/src/main/javaInterview/picture/并发.png)
+![avatar](/src/main/javaInterview/picture/java基础_并发.png)
 
 D:\rookieStudyProject\a_me\data_handle_test\src\main\javaInterview\picture\img.png
 
