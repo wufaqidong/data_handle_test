@@ -97,31 +97,31 @@ FutureTask实现类实现了Future接口，并且有构造函数，参数是传�
 以此获得返回值
 其中Future接口的get方法是阻塞方法，没有得到get的值会阻塞主线程
 
-```
-package TestFutureTask;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-public class TestMain {
-public static void main(String[] args) {
-FutureTask<Integer> futureTask = new FutureTask<Integer>(()->{
-System.out.println("futureTask开始了");
-Thread.sleep(10000);
-return 100;
-}
-);
-Thread thread = new Thread(futureTask, "thread1");
-thread.start();
-try {
-System.out.println(futureTask.get());//会阻塞主线程使得主线程不能立刻输出语句
-} catch (InterruptedException e) {
-e.printStackTrace();
-} catch (ExecutionException e) {
-e.printStackTrace();
-}
-System.out.println("主线程运行！");
-}
-}
-```
+    package TestFutureTask;
+    import java.util.concurrent.ExecutionException;
+    import java.util.concurrent.FutureTask;
+
+    public class TestMain {
+        public static void main(String[] args) {
+            FutureTask<Integer> futureTask = new FutureTask<Integer>(() -> {
+                System.out.println("futureTask开始了");
+                Thread.sleep(10000);
+                return 100;
+            }
+            );
+            Thread thread = new Thread(futureTask, "thread1");
+            thread.start();
+            try {
+                System.out.println(futureTask.get());//会阻塞主线程使得主线程不能立刻输出语句
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            System.out.println("主线程运行！");
+        }
+    }
+
 #👉 6、什么是Callable和Future?
 Callable 接口类似于 Runnable，从名字就可以看出来了，但是 Runnable 不会返 回结果，并且无法抛出返回结果的异常，
 而 Callable 功能更强大一些，被线程执 行后，可以返回值，这个返回值可以被 Future 拿到，也就是说，Future 可以拿到 异步执行任务的返回值。可以认为是带有回调的 Runnable。
@@ -150,9 +150,123 @@ start方法是线程从就绪变为启动状态的方法，而run方法是线程
 interrupted() 不仅返回当前Thread的中断状态，而且会清除当前Thread的中断状态**。所以如果当前Thread.interrupted()返回中断true，紧接着再call一次interrupted() 会返回“非中断false”，因为中断状态在第一次call的时候清除了。(源码中进行了操作)静态方法
 isInterrupted() 也会返回当前Thread的中断状态，但是==不会主动清除当前Thread的中断状态==。
 
+#👉 10、为何stop()和suspend()方法不推荐使用
+用Thread.stop()方法来终止线程将会释放该线程对象已经锁定的所有监视器。
+如果以前受这些监视器保护的任何对象都处于不连贯状态，那么损坏的对象对其他线程可见，这有可能导致不安全的操作。
 
+suspend()方法 该方法已经遭到反对，因为它具有固有的死锁倾向。调用suspend（）方法的时候，目标线程会停下来，并且不会释放锁资源，在目标线程重新开始以前，其他线程都不能访问该资源。
+除非被挂起的线程恢复运行。对任何其他线程来说，如果想恢复目标线程，同时又试图使用任何一个锁定的资源，就会造成死锁。
 
+#👉 11、如何停止一个正在运行的线程？（重要）
+##1、使用stop()来停止线程：stop()方法让线程立即停止运行, 这种暴力停止可能会破坏线程业务的原子性，**不推荐使用**
+##2、使用interrupt产生打断标志位来停止线程
+（1）捕捉打断标记并且直接return
+由于run方法是一个void方法，可以在线程运行的时候用interrupt方法进行打断，此时产生一个打断标记位，捕捉到该标记位之后便可以优雅地结束该线程（可以直接return，也可以进行一些操作后return;）
 
+    static class MyThread extends Thread {
+        @Override
+        public void run() {
+            for (int i = 0; i < 500000; i++) {
+                if (this.isInterrupted()) {
+                    System.out.println("线程终止, 停止for循环.");
+                    return;
+                }
+                System.out.println("i=" + (i + 1));
+            }
+        }
+    }
 
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+        thread.start();
 
+        try {
+            Thread.sleep(200);
+            thread.interrupt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
+（2）捕捉打断标记，并且抛出异常终止程序
+捕捉到标记位之后，扔出异常来停止该线程，需要使用throw new Exception来打断
+
+    static class MyThread extends Thread {
+        @Override
+        public void run() {
+            try {
+                for (int i = 0; i < 100000; i++) {
+                    if (this.isInterrupted()) {
+                        System.out.println("线程终止, 停止for循环.");
+                        throw new InterruptedException();
+                    }
+                    System.out.println("i=" + (i + 1));
+                }
+            } catch (InterruptedException e) {
+                System.out.println("MyThread抛出InterruptedException.");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+        thread.start();
+
+        try {
+            Thread.sleep(200);
+            thread.interrupt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+（3）当线程处于sleep,park,join,wait的时候需要在catch块处理异常时自行设置打断标记
+当线程处于正常状态的时候，打断会产生打断的标记位，但是在线程处于sleep,join,wait,park等状态时，被打断将不会产生标记位，
+我们可以使用trycatch块来处理该情况，当程序被打断时，在程序catch并处理打断异常时候可以自己添加打断标记，从而设置打断标记。（两阶段终止模式）
+注：若程序是while循环，那么在捕捉到打断标记时，也可以用break结束循环从而结束线程
+
+    @Slf4j
+    public class Test11 {
+        public static void main(String[] args) throws InterruptedException {
+            TwoParseTermination twoParseTermination = new TwoParseTermination();
+            twoParseTermination.start();
+            Thread.sleep(3000);  // 让监控线程执行一会儿
+            twoParseTermination.stop(); // 停止监控线程
+        }
+    }
+
+    @Slf4j
+    class TwoParseTermination{
+        Thread thread ;
+        public void start(){
+            thread = new Thread(()->{
+                while(true){
+                    if (Thread.currentThread().isInterrupted()){
+                        log.debug("线程结束。。正在料理后事中");
+                        break;
+                    }
+                    try {
+                        Thread.sleep(500);
+                        log.debug("正在执行监控的功能");
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        e.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
+        }
+        public void stop(){
+            thread.interrupt();
+        }
+    }
+
+#👉 12、sleep和yield的区别？
+##状态的区别：
+调用 sleep 会让当前线程从 Running 进入 Timed Waiting 状态（阻塞）
+调用 yield 会让当前线程从 Running 进入 Runnable 就绪状态，然后调度执行其它线程
+
+##调度的区别：
+调用sleep之后，该线程将进入阻塞状态，分不到CPU的时间片
+调用yield之后，该线程会让出CPU的使用权，但是任务调度器仍然可能分配给该线程时间片，从宏观上只是该线程被分配CPu的概率变低了
