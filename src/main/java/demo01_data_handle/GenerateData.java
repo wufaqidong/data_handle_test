@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Random;
 
 /**
- * @program: data_handle
+ * @program: 产生10G的 1-1000的数据在D盘
  * @description:
  * @author: qiaoqiao
  * @create: 2022-05-20 12:59

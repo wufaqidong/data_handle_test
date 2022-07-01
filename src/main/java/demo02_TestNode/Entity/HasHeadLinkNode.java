@@ -1,4 +1,4 @@
-package Entity;
+package demo02_TestNode.Entity;
 
 /**
  * @ClassName HasHeadLinkNode

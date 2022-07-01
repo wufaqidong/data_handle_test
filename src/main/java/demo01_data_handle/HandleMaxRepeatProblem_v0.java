@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @program: data_handle
+ * @program: 通过单线程处理
  * @description:
  * @author: qiaoqiao
  * @create: 2022-05-20 13:16

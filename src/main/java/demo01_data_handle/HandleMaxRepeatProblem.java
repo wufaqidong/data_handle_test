@@ -25,7 +25,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import cn.hutool.core.collection.CollectionUtil;
 
 /**
- * @program: data_handle_test
+ * @program: 分治法
  * @description:
  * @author: qiaoqiao
  * @create: 2022-05-20 13:30
