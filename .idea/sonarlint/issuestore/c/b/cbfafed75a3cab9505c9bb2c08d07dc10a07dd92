@@ -1,0 +1,79 @@
+
+t	java:S135ù"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ
+Q
+java:S1141¥"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+b
+java:S2184ö"FCast one of the operands of this multiplication operation to a "long".(´Î”Úşÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Êîá­
+h
+java:S2095™"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(˜Êë’øÿÿÿÿ
+h
+java:S2095õ"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ğø¼ûûÿÿÿÿ
+o	java:S115#"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ôè
+t	java:S115$"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(´˜½ûÿÿÿÿ
+o	java:S115&"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(äßëã
+t	java:S115*"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Êîû€ùÿÿÿÿ
+U
+java:S1118Q":Add a private constructor to hide the implicit public one.(çù—ûÿÿÿÿ
+Q	java:S125T"<This block of commented-out lines of code should be removed.(ºÏ™ô
+t
+java:S2142^"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+W	java:S125œ"<This block of commented-out lines of code should be removed.(“¹ÑÌøÿÿÿÿ
+\
+java:S2147Ç"ECombine this catch with the one at line 197, which has the same body.(ï­£Ä
+=
+java:S1075¿"&Remove this hard-coded path-delimiter.(ùñ¼Ú
+W	java:S899Á"BDo something with the "boolean" value returned by "createNewFile".(¢ç†g
+W	java:S125Ä"<This block of commented-out lines of code should be removed.(ó®î—øÿÿÿÿ
+a
+java:S2147á"ECombine this catch with the one at line 223, which has the same body.(ĞĞ¹óúÿÿÿÿ
+C
+java:S1602æ",Remove useless curly braces around statement(¥—ığ
+c
+java:S1612æ"LReplace this lambda with method reference 'HandleMaxRepeatProblem::monitor'.(¥—ığ
+n
+java:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ÅÁ®âøÿÿÿÿ
+u
+java:S2142÷"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+T
+java:S1155ş">Use isEmpty() to check whether the collection is empty or not.(™øİ#
+O	java:S106‡"9Replace this use of System.out or System.err by a logger.(ı³Èã
+O	java:S106‹"9Replace this use of System.out or System.err by a logger.(âÍ¼ş
+U
+java:S4719™"9Replace charset name argument with StandardCharsets.UTF_8(˜Êë’øÿÿÿÿ
+T	java:S106¡"9Replace this use of System.out or System.err by a logger.(Ü²ŠÍùÿÿÿÿ
+u
+java:S2142¥"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+k
+java:S1215¤"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+T	java:S106½"9Replace this use of System.out or System.err by a logger.(”öøÂıÿÿÿÿ
+
+java:S1130Ç"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(íæÏÿ
+”
+java:S1130Ç"}Remove the declaration of thrown exception 'java.io.UnsupportedEncodingException', as it cannot be thrown from method's body.(íæÏÿ
+T	java:S106É"9Replace this use of System.out or System.err by a logger.(ú±ªµÿÿÿÿÿ
+u
+java:S2142Ó"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+R	java:S125á"<This block of commented-out lines of code should be removed.(è‹Á‚
+R	java:S125ä"<This block of commented-out lines of code should be removed.(è‹Á‚
+h
+java:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 45 to the 15 allowed.(ä–©k
+U
+java:S4719õ"9Replace charset name argument with StandardCharsets.UTF_8(ğø¼ûûÿÿÿÿ
+P
+java:S1117û"9Rename "count" which hides the field declared at line 65.(÷•øº
+`
+java:S2175û"IA "Map<String, AtomicInteger>" cannot contain a "int" in a "String" type.(÷•øº
+T	java:S106ı"9Replace this use of System.out or System.err by a logger.(³¤ô‰ùÿÿÿÿ
+e
+java:S2175ı"IA "Map<String, AtomicInteger>" cannot contain a "int" in a "String" type.(³¤ô‰ùÿÿÿÿ
+?	java:S108…")Either remove or fill this block of code.(ï­£Ä
+u
+java:S2142²"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+f
+java:S3252’"JUse static access with "cn.hutool.core.collection.CollUtil" for "isEmpty".(şÅí²üÿÿÿÿ
+_
+java:S2175£"IA "Map<String, AtomicInteger>" cannot contain a "int" in a "String" type.(¾ëÉ	
+?	java:S108²")Either remove or fill this block of code.(ä ¹€
+I
+java:S1144ò"3Remove this unused private "startConsumer0" method.(ä–©k

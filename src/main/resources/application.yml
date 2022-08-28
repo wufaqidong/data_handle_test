@@ -1,0 +1,43 @@
+server:
+  port: 8100
+  max-http-header-size: 100000
+
+spring:
+  application:
+    name: view-service
+  boot:
+    admin:
+      client:
+        instance:
+          service-base-url: http://localhost:${server.port}
+        auto-registration: true
+        url: http://127.0.0.1:22122
+        api-path: instances
+        username: admin
+        password: admin
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/aaa?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    username: admin
+    password: 123456
+
+mybatis-plus:
+  type-aliases-package: cn.com.taiji.lawenforcement.entity
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    field-strategy: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: true
+    #false表示按需加载
+    aggressive-lazy-loading: false
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    #log日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    password: Admin23
+# minio 文件存储配置信息
+minio:
+  endpoint: http://127.0.0.1:9000
+  accesskey: minioadmin
+  secretKey: minioadmin

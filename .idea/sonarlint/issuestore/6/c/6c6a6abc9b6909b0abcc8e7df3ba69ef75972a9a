@@ -1,0 +1,27 @@
+
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÇÀûÕ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Êîá­
+g
+java:S2095m"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(˜Êë’øÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(×ôè
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(´˜½ûÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(äßëã
+U
+java:S11185":Add a private constructor to hide the implicit public one.(çù—ûÿÿÿÿ
+Z
+java:S2147X"DCombine this catch with the one at line 86, which has the same body.(ï­£Ä
+<
+java:S1075Q"&Remove this hard-coded path-delimiter.(ùñ¼Ú
+V	java:S899S"BDo something with the "boolean" value returned by "createNewFile".(¢ç†g
+T
+java:S4719m"9Replace charset name argument with StandardCharsets.UTF_8(˜Êë’øÿÿÿÿ
+S	java:S106u"9Replace this use of System.out or System.err by a logger.(Ü²ŠÍùÿÿÿÿ
+t
+java:S2142x"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+T	java:S106"9Replace this use of System.out or System.err by a logger.(”öøÂıÿÿÿÿ
+F
+java:S1068*"1Remove this unused "startConsumer" private field.(åÕˆv
+N
+java:S1068/"3Remove this unused "consumerRunning" private field.(»¡ïôúÿÿÿÿ
+E
+java:S1144“".Remove this unused private "clearTask" method.(ß°Ï²
