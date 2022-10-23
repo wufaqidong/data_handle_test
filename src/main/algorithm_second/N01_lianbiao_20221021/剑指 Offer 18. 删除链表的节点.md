@@ -32,21 +32,25 @@
 
 ```
 class Solution {
-public ListNode deleteNode(ListNode head, int val) {
-// 如果头节点就是要删除的节点，则返回头节点的下一个节点
-if (head.val == val) {
-return head.next;
-}
-// 双指针，初始化
-ListNode pre = head, cur = head.next;
-while (cur != null && cur.val != val) {
-pre = cur;
-cur = cur.next;
-}
-if (cur != null) {
-pre.next = cur.next;
-}
-return head;
-}
+    public ListNode deleteNode(ListNode head, int val) {
+        // 如果头节点为null，直接返回
+        if(head == null){
+            return null;
+        }
+        // 如果头节点就是要删除的节点，则返回头节点的下一个节点
+        if (head.val == val) {
+            return head.next;
+        }
+        // 双指针，初始化
+        ListNode pre = head, cur = head.next;
+        while (cur != null && cur.val != val) {
+            pre = cur;
+            cur = cur.next;
+        }
+        if (cur != null) {
+            pre.next = cur.next;
+        }
+        return head;
+    }
 }
 ```
