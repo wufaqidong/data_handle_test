@@ -40,7 +40,7 @@
 例如 ：示例1中 输入：字符串abcdefg，n=2
 
 如图：
-![双链表](/src/main/algorithm/No4_zifuchuan/picture/左旋字符串.png)
+![双链表](/src/main/algorithm/No4_字符串/picture/左旋字符串.png)
 
 最终得到左旋2个单元的字符串：cdefgab
 
