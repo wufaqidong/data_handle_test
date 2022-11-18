@@ -6,7 +6,11 @@
 
     <groupId>org.example</groupId>
     <artifactId>data_handle_test</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>AopLog</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
